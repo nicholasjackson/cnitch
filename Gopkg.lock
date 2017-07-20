@@ -29,7 +29,6 @@
   name = "github.com/docker/docker"
   packages = ["api/types","api/types/blkiodev","api/types/container","api/types/events","api/types/filters","api/types/mount","api/types/network","api/types/reference","api/types/registry","api/types/strslice","api/types/swarm","api/types/time","api/types/versions","api/types/volume","client","pkg/tlsconfig"]
   revision = "092cba3727bb9b4a2f0e922cd6c0f93ea270e363"
-  source = "github.com/moby/moby"
   version = "v1.13.1"
 
 [[projects]]
@@ -43,12 +42,6 @@
   packages = ["."]
   revision = "f2d77a61e3c169b43402a0a1e84f06daf29b8190"
   version = "v0.3.1"
-
-[[projects]]
-  name = "github.com/moby/moby"
-  packages = ["api/types","api/types/container","api/types/filters","api/types/network"]
-  revision = "90d35abf7b3535c1c319c872900fbd76374e521c"
-  version = "v17.05.0-ce-rc3"
 
 [[projects]]
   name = "github.com/opencontainers/runc"
@@ -95,6 +88,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "f28ea710cd00a470a43a115f137fe8f506963b535bfcfee2c15545430832575f"
+  inputs-digest = "55239f486d82bae9764669967507df9236a16ff3c22e6f5ceb523b5c74a508fa"
   solver-name = "gps-cdcl"
   solver-version = 1

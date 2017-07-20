@@ -6,10 +6,10 @@ import (
 
 	"golang.org/x/net/context"
 
-	"github.com/moby/moby/api/types"
-	"github.com/moby/moby/api/types/container"
-	"github.com/moby/moby/api/types/filters"
-	"github.com/moby/moby/api/types/network"
+	"github.com/docker/docker/api/types"
+	"github.com/docker/docker/api/types/container"
+	"github.com/docker/docker/api/types/filters"
+	"github.com/docker/docker/api/types/network"
 	"github.com/stretchr/testify/mock"
 )
 
