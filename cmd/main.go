@@ -14,6 +14,6 @@ func main() {
 	log.Println("")
 
 	c := cnitch.New(10 * time.Second)
-	c.AddReporting(&reporting.Logger{})
+	c.AddReporting(reporting.NewLogger(os.Stdout))
 	c.Run()
 }
