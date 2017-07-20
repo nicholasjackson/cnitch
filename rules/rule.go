@@ -1,16 +1,10 @@
 package rules
 
-type Info struct {
-	ContainerImage string
-	ContainerID    string
-	Exceptions     []Exception
-}
+import "github.com/nicholasjackson/cnitch/entities"
 
-type Exception struct {
-	Message string
-	Info    interface{}
-}
-
+// Rule defines an interface which should be implemented to check for problems
+// with a running container
 type Rule interface {
-	Execute() ([]Info, error)
+	// Execute the rule
+	Execute(containerID string) ([]entities.Exception, error)
 }

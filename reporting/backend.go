@@ -1,7 +1,9 @@
 package reporting
 
-import "github.com/nicholasjackson/cnitch/rules"
+import "github.com/nicholasjackson/cnitch/entities"
 
+// Backend defines an interface for a reporting backend
 type Backend interface {
-	Report([]rules.Info) error
+	// Report sends exception information to the backend
+	Report(entities.Host, []entities.Info) error
 }
