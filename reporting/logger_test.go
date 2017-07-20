@@ -27,7 +27,7 @@ func TestLogsCorrectHeaderDetails(t *testing.T) {
 
 	lines := strings.Split(writer.String(), "\n")
 
-	assert.Equal(t, "Checking image: fakeimage, id: abc123", lines[0])
+	assert.Equal(t, "Checking image: fakeimage, id: abc123", lines[0][20:len(lines[0])])
 }
 
 func TestLogsCorrectExceptionDetails(t *testing.T) {
@@ -42,5 +42,5 @@ func TestLogsCorrectExceptionDetails(t *testing.T) {
 
 	lines := strings.Split(writer.String(), "\n")
 
-	assert.Equal(t, "ooooh root", lines[1])
+	assert.Equal(t, "ooooh root", lines[1][20:len(lines[1])])
 }

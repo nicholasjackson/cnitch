@@ -28,5 +28,5 @@ func (l *Logger) Report(host entities.Host, infos []entities.Info) error {
 
 // NewLogger creates a logger which will write to the given writer
 func NewLogger(writer io.Writer) *Logger {
-	return &Logger{logger: log.New(writer, "", 0)}
+	return &Logger{logger: log.New(writer, "", log.LstdFlags)}
 }
