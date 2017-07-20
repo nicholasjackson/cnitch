@@ -30,7 +30,10 @@ func (r *RootProcess) Execute(containerID string) ([]entities.Exception, error) 
 	for i := 0; i < len(procs.Processes); i++ {
 		// lookup columns from procs.Titles
 		if procs.Processes[i][0] == "root" || procs.Processes[i][0] == "0" {
-			message := fmt.Sprintf("WARNING: found process running as root: %s pid: %s", procs.Processes[i][7], procs.Processes[i][1])
+			message := fmt.Sprintf(
+				"WARNING: found process running as root: %s pid: %s",
+				procs.Processes[i][7],
+				procs.Processes[i][1])
 			exceptions = append(exceptions, entities.Exception{Message: message})
 		}
 	}
