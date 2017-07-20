@@ -29,8 +29,8 @@ func (cli *DockerAPI) ContainerCreate(ctx context.Context, config *container.Con
 	return container.ContainerCreateCreatedBody{}, nil
 }
 
-func (cli *DockerAPI) ContainerDiff(ctx context.Context, containerID string) ([]container.ContainerChangeResponseItem, error) {
-	return make([]container.ContainerChangeResponseItem, 0), nil
+func (cli *DockerAPI) ContainerDiff(ctx context.Context, containerID string) ([]types.ContainerChange, error) {
+	return make([]types.ContainerChange, 0), nil
 }
 
 func (m *DockerAPI) ContainerExecAttach(ctx context.Context, execID string, config types.ExecConfig) (types.HijackedResponse, error) {
@@ -107,6 +107,15 @@ func (m *DockerAPI) ContainerStats(ctx context.Context, container string, stream
 
 func (m *DockerAPI) ContainerStart(ctx context.Context, container string, options types.ContainerStartOptions) error {
 	return nil
+}
+
+func (m *DockerAPI) ContainerTop(ctx context.Context, container string, arguments []string) (types.ContainerProcessList, error) {
+	args := m.Called(ctx, container, arguments)
+	return args.Get(0).(types.ContainerProcessList), args.Error(1)
+}
+
+func (m *DockerAPI) ContainerWait(ctx context.Context, container string) (int64, error) {
+	return -1, nil
 }
 
 func (m *DockerAPI) ContainerStop(ctx context.Context, container string, timeout *time.Duration) error {
