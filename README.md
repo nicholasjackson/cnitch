@@ -1,5 +1,7 @@
 # Cntich
-Cnitch is a framework for monitoring processes inside of Docker to identify any processes which are running as route. Cnitch will monitor processes running under the docker engine every 5s and will alert when a process in a container is found to be running as root.
+Cnitch is a framework for monitoring processes inside of Docker to identify any processes which are running as root. 
+
+Cnitch will monitor processes running under the docker engine every 5s and will alert when a process in a container is found to be running as root.
 
 
 Currently WIP.
