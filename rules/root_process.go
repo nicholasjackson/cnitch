@@ -8,6 +8,9 @@ import (
 	"github.com/nicholasjackson/cnitch/entities"
 )
 
+// ExceptionRootProcess defines the error code for a root process exception
+const ExceptionRootProcess = 9901
+
 // RootProcess identifies any root processes running in a container
 type RootProcess struct {
 	cli client.ContainerAPIClient
@@ -34,7 +37,11 @@ func (r *RootProcess) Execute(containerID string) ([]entities.Exception, error) 
 				"WARNING: found process running as root: %s pid: %s",
 				procs.Processes[i][7],
 				procs.Processes[i][1])
-			exceptions = append(exceptions, entities.Exception{Message: message})
+			exceptions = append(exceptions, entities.Exception{
+				Message: message,
+				Code:    ExceptionRootProcess,
+				Tag:     "exception.root_process",
+			})
 		}
 	}
 

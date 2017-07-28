@@ -1,6 +1,7 @@
 package rules
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/docker/docker/api/types"
@@ -23,7 +24,18 @@ func TestExecuteReturnsNothingWhenNoRunningProcesses(t *testing.T) {
 
 	assert.Nil(t, err)
 	assert.Nil(t, exceptions)
+}
 
+func TestExecuteReturnsErrorWhenDockerError(t *testing.T) {
+	dockerAPI, rule := setup()
+	dockerAPI.On("ContainerTop", mock.Anything, mock.Anything, mock.Anything).Return(
+		types.ContainerProcessList{},
+		fmt.Errorf("oops"),
+	)
+
+	_, err := rule.Execute("something")
+
+	assert.Equal(t, err, fmt.Errorf("oops"))
 }
 
 func TestExecuteReturnsExceptionWhenRunningProcessesIsRoot(t *testing.T) {
@@ -38,6 +50,34 @@ func TestExecuteReturnsExceptionWhenRunningProcessesIsRoot(t *testing.T) {
 
 	assert.Nil(t, err)
 	assert.Equal(t, 1, len(exceptions))
+}
+
+func TestSetsExceptionCodeWhenRunningProcessesIsRoot(t *testing.T) {
+	processes := types.ContainerProcessList{}
+	processes.Processes = make([][]string, 1)
+	processes.Processes[0] = []string{"root", "123", "234", "", "", "", "", "/rootprocess"}
+
+	dockerAPI, rule := setup()
+	dockerAPI.On("ContainerTop", mock.Anything, mock.Anything, mock.Anything).Return(processes, nil)
+
+	exceptions, err := rule.Execute("something")
+
+	assert.Nil(t, err)
+	assert.Equal(t, ExceptionRootProcess, exceptions[0].Code)
+}
+
+func TestSetsExceptionTagWhenRunningProcessesIsRoot(t *testing.T) {
+	processes := types.ContainerProcessList{}
+	processes.Processes = make([][]string, 1)
+	processes.Processes[0] = []string{"root", "123", "234", "", "", "", "", "/rootprocess"}
+
+	dockerAPI, rule := setup()
+	dockerAPI.On("ContainerTop", mock.Anything, mock.Anything, mock.Anything).Return(processes, nil)
+
+	exceptions, err := rule.Execute("something")
+
+	assert.Nil(t, err)
+	assert.Equal(t, "exception.root_process", exceptions[0].Tag)
 }
 
 func TestExecuteReturnsExceptionWhenRunningProcessesIsRootId(t *testing.T) {

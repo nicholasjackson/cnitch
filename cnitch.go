@@ -67,7 +67,7 @@ func (c *Cnitch) report(infos []entities.Info) {
 }
 
 // New creates a new Cnitch with the given checkInterval
-func New(checkInterval time.Duration) *Cnitch {
+func New(checkInterval time.Duration, hostName string) *Cnitch {
 	cli, err := client.NewEnvClient()
 	if err != nil {
 		panic(err)
@@ -76,10 +76,13 @@ func New(checkInterval time.Duration) *Cnitch {
 	cn := Cnitch{interval: checkInterval, cli: cli}
 
 	dockerInfo, err := cli.Info(context.Background())
-	if err == nil {
-		cn.host.Name = dockerInfo.Name
-		cn.host.DockerVersion = dockerInfo.ServerVersion
+	if err != nil {
+		panic(err)
 	}
+
+	cn.host.HostName = hostName
+	cn.host.Name = dockerInfo.Name
+	cn.host.DockerVersion = dockerInfo.ServerVersion
 
 	cn.reporting = make([]reporting.Backend, 0)
 

@@ -4,8 +4,8 @@ package entities
 type Host struct {
 	// Name is the name of the Docker Engine
 	Name string
-	// IPAddress of the Docker Engine
-	IPAddress string
+	// HostName is the FQDN or IPAddress of the Docker Engine
+	HostName string
 	// DockerVersion is the current Docker Engine version
 	DockerVersion string
 }

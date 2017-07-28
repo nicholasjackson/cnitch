@@ -2,6 +2,12 @@
 
 
 [[projects]]
+  name = "github.com/DataDog/datadog-go"
+  packages = ["statsd"]
+  revision = "0ddda6bee21174ef6c4873647cb0d6ec9cba996f"
+  version = "1.1.0"
+
+[[projects]]
   name = "github.com/Microsoft/go-winio"
   packages = ["."]
   revision = "c4dc1301f1dc0307acd38e611aa375a64dfe0642"
@@ -88,6 +94,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "55239f486d82bae9764669967507df9236a16ff3c22e6f5ceb523b5c74a508fa"
+  inputs-digest = "c0ce8ca90c91e102052269a2be9331113327970cb5284fba29fe179a5663e786"
   solver-name = "gps-cdcl"
   solver-version = 1
