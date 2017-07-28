@@ -1,7 +1,7 @@
 version: "2"
 services:
   cnitch:
-    image: nicholasjackson/cnitch:latest
+    image: quay.io/nicholasjackson/cnitch:latest
     environment:
       - DOCKER_HOST=unix:///var/run/docker.sock
     volumes:
