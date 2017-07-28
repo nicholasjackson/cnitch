@@ -11,9 +11,11 @@ import (
 )
 
 var hostName = flag.String("hostname", "localhost", "hostname or fully qualified domain for the docker host")
-var statsDServer = flag.String("statsD-server", "", "hostname or ip address of the statsD collector")
+var statsDServer = flag.String("statsd-server", "", "hostname or ip address of the statsD collector")
 
 func main() {
+	flag.Parse()
+
 	log.Println("Starting Cnitch: Monitoring Docker Processes at:", os.Getenv("DOCKER_HOST"))
 	log.Println("")
 

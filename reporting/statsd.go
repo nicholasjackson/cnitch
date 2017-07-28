@@ -17,10 +17,7 @@ func (l *StatsD) Report(host entities.Host, infos []entities.Info) error {
 
 	for _, info := range infos {
 		tags := append(rootTags, "container:"+info.ContainerImage)
-
-		for _, exception := range info.Exceptions {
-			l.client.Incr("cnitch."+exception.Tag, tags, 1)
-		}
+		l.client.Incr("cnitch.exception.root_process", tags, 1)
 	}
 
 	return nil

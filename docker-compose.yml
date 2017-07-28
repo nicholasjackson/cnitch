@@ -1,0 +1,16 @@
+version: "2"
+services:
+  cnitch:
+    image: nicholasjackson/cnitch:latest
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    group_add:
+      - 100
+    command: ["--hostname=localhost", "--statsd-server=statsd:8125"]
+  statsd:
+    image:  datadog/docker-dogstatsd:latest
+    environment:
+      - API_KEY=${API_KEY}
+      - LOG_LEVEL=DEBUG
