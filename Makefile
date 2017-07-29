@@ -15,3 +15,6 @@ build_linux:
 
 build_docker: build_linux
 	docker build -t quay.io/nicholasjackson/cnitch .
+
+push_docker:
+	docker push quay.io/nicholasjackson/cnitch 
