@@ -8,6 +8,23 @@ cnitch (snitch or container snitch) is a simple framework and command line tool 
 
 Why is this a bad thing?  If you have not already been to [can I haz non-privileged containers? by mhausenblas](http://canihaznonprivilegedcontainers.info) then I recommend you head over there now to get all the info.
 
+When I was developing cnitch I ran into what I though was a bug with the application, cnitch was reporting itself as a root process in a Docker container.  I was unsure how this could be as the Dockerfile explicitly stated that I was creating a user not running as root.  After much debugging and verification I decided to double check the Dockerfile and found this:
+
+```dockerfile
+FROM alpine
+
+RUN adduser -h /home/cnitch -D cnitch cnitch
+
+COPY ./cmd/cnitch /home/cnitch/
+RUN chmod +x /home/cnitch/cnitch
+
+#USER cnitch
+
+ENTRYPOINT ["/home/cnitch/cnitch"]
+```
+
+When I was testing the application container to figure out a problem with permissions on the Docker sock I must have commented out the `USER` command.  Pretty meta, cnitch helped to find a problem with cnitch, this is totally going into the integration tests.
+
 
 ## How it works
 cnitch connects to the Docker Engine using the API and queries the currently running containers,  it then inspects the processes running inside this container and identifies any which are running as the root user.  
@@ -63,14 +80,14 @@ $ docker run -i -t --rm \
 If you are running on a mac and using Docker Machine the Docker sock is inside the VM which means you can not use the `stat` command to discover the group id.
 
 ## Example
-There is an example Docker Compose stack inside the [./example](/example) folder to show how cnitch exports data to statsd.  To run this example start the example run:
+There is an example Docker Compose stack inside the [./example](/example) folder to show how cnitch exports data to statsd.  To run this example:
 
 ```
 $ cd ./example
 $ docker-compose up
 ``` 
 
-Once everything has started running open `http://[docker host ip]:3000` in your web browser and you should see the Grafana login screen.
+Once everything has started running, open `http://[docker host ip]:3000` in your web browser and you should see the Grafana login screen.
 
 ![grafana login](./screen1.png)
 
