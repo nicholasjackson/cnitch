@@ -12,14 +12,20 @@ import (
 
 var hostName = flag.String("hostname", "localhost", "hostname or fully qualified domain for the docker host")
 var statsDServer = flag.String("statsd-server", "", "hostname or ip address of the statsD collector")
+var checkInterval = flag.String("check", "10s", "check interval, 1m, 10s, 1h, etc.")
 
 func main() {
 	flag.Parse()
 
-	log.Println("Starting Cnitch: Monitoring Docker Processes at:", os.Getenv("DOCKER_HOST"))
-	log.Println("")
+	duration, err := time.ParseDuration(*checkInterval)
+	if err != nil {
+		log.Fatalln("invalid duration, specify a duration such as 10s = 10 seconds")
+	}
 
-	c := cnitch.New(10*time.Second, *hostName)
+	log.Println("Starting Cnitch: Monitoring Docker Processes at:", os.Getenv("DOCKER_HOST"))
+	log.Println("Checking for root processes every:", duration.String())
+
+	c := cnitch.New(duration, *hostName)
 
 	c.AddReporting(reporting.NewLogger(os.Stdout))
 

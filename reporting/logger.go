@@ -17,10 +17,14 @@ func (l *Logger) Report(host entities.Host, infos []entities.Info) error {
 	for _, info := range infos {
 		l.logger.Printf("Checking image: %s, id: %s\n", info.ContainerImage, info.ContainerID)
 
-		for _, exception := range info.Exceptions {
-			l.logger.Println(exception.Message)
+		if len(info.Exceptions) == 0 {
+			l.logger.Println(">> No root processes found")
+			continue
 		}
-		l.logger.Println("")
+
+		for _, exception := range info.Exceptions {
+			l.logger.Println(">> " + exception.Message)
+		}
 	}
 
 	return nil

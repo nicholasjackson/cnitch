@@ -18,3 +18,12 @@ build_docker: build_linux
 
 push_docker:
 	docker push quay.io/nicholasjackson/cnitch 
+
+sonar_qube:
+	sonar-scanner \
+    -Dsonar.projectKey=cnitch \
+    -Dsonar.sources=. \
+    -Dsonar.host.url=https://sonarcloud.io \
+    -Dsonar.organization=nicholasjackson-github \
+    -Dsonar.login=abcdef0123456789
+	19a5ee8d5578f46b534b4f8c112b25700285274a
