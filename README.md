@@ -1,8 +1,8 @@
 # cnitch
 
-[CircleCI](https://circleci.com/gh/nicholasjackson/cnitch)
-[GoDoc](https://godoc.org/github.com/nicholasjackson/cnitch)
-[Docker Repository on Quay](https://quay.io/repository/nicholasjackson/cnitch)
+ [![CircleCI](https://circleci.com/gh/nicholasjackson/cnitch.svg?style=svg)](https://circleci.com/gh/nicholasjackson/cnitch)  
+ [![GoDoc](https://godoc.org/github.com/nicholasjackson/cnitch?status.svg)](https://godoc.org/github.com/nicholasjackson/cnitch)  
+ [![Docker Repository on Quay](https://quay.io/repository/nicholasjackson/cnitch/status "Docker Repository on Quay")](https://quay.io/repository/nicholasjackson/cnitch)
 
 cnitch (snitch or container snitch) is a simple framework and command line tool for monitoring Docker containers to identify any processes which are running as root.  
 
