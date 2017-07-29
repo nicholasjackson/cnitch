@@ -42,5 +42,19 @@ func TestLogsCorrectExceptionDetails(t *testing.T) {
 
 	lines := strings.Split(writer.String(), "\n")
 
-	assert.Equal(t, "ooooh root", lines[1][20:len(lines[1])])
+	assert.Equal(t, ">> ooooh root", lines[1][20:len(lines[1])])
+}
+
+func TestLogsWhenNoException(t *testing.T) {
+	writer, logger := setupLogger()
+
+	infos := make([]entities.Info, 1)
+	infos[0].ContainerImage = "fakeimage"
+	infos[0].ContainerID = "abc123"
+
+	logger.Report(entities.Host{}, infos)
+
+	lines := strings.Split(writer.String(), "\n")
+
+	assert.Equal(t, ">> No root processes found", lines[1][20:len(lines[1])])
 }
