@@ -104,55 +104,55 @@ If you are not using `/var/run/docker.sock` to communicate with your Docker host
 ## Roadmap
 Implement features from Docker Bench Security Script [https://github.com/docker/docker-bench-security](https://github.com/docker/docker-bench-security)
 
-[ ] 1.1 Ensure a separate partition for containers has been created
-[ ] 1.2 Ensure the container host has been Hardened
-[ ] 1.3 Ensure Docker is up to date
-[ ] 1.4 Ensure only trusted users are allowed to control Docker daemon
-[ ] 1.5 Ensure auditing is configured for the Docker daemon 
-[ ] 1.6 Ensure auditing is configured for Docker files and directories - /var/lib/docker
-[ ] 1.7 Ensure auditing is configured for Docker files and directories - /etc/docker
-[ ] 1.8 Ensure auditing is configured for Docker files and directories - docker.service
-[ ] 1.9 Ensure auditing is configured for Docker files and directories - docker.socket
-[ ] 1.10 Ensure auditing is configured for Docker files and directories - /etc/default/docker
-[ ] 1.11 Ensure auditing is configured for Docker files and directories - /etc/docker/daemon.json
-[ ] 1.12 Ensure auditing is configured for Docker files and directories - /usr/bin/docker-containerd
-[ ] 1.13 Ensure auditing is configured for Docker files and directories - /usr/bin/docker-runc
+[ ] 1.1 Ensure a separate partition for containers has been created  
+[ ] 1.2 Ensure the container host has been Hardened  
+[ ] 1.3 Ensure Docker is up to date  
+[ ] 1.4 Ensure only trusted users are allowed to control Docker daemon  
+[ ] 1.5 Ensure auditing is configured for the Docker daemon   
+[ ] 1.6 Ensure auditing is configured for Docker files and directories - /var/lib/docker  
+[ ] 1.7 Ensure auditing is configured for Docker files and directories - /etc/docker  
+[ ] 1.8 Ensure auditing is configured for Docker files and directories - docker.service  
+[ ] 1.9 Ensure auditing is configured for Docker files and directories - docker.socket   
+[ ] 1.10 Ensure auditing is configured for Docker files and directories - /etc/default/docker  
+[ ] 1.11 Ensure auditing is configured for Docker files and directories - /etc/docker/daemon.json  
+[ ] 1.12 Ensure auditing is configured for Docker files and directories - /usr/bin/docker-containerd  
+[ ] 1.13 Ensure auditing is configured for Docker files and directories - /usr/bin/docker-runc  
 
-[ ] 2.1 Ensure network traffic is restricted between containers on the default bridge
-[ ] 2.2 Ensure the logging level is set to 'info
-[ ] 2.3 Ensure Docker is allowed to make changes to iptables
-[ ] 2.4 Ensure insecure registries are not used
-[ ] 2.5 Ensure aufs storage driver is not used
-[ ] 2.6 Ensure TLS authentication for Docker daemon is configured
-[ ] 2.7 Ensure the default ulimit is configured appropriately
-[ ] 2.8 Enable user namespace support
-[ ] 2.9 Ensure the default cgroup usage has been confirmed
-[ ] 2.10 Ensure base device size is not changed until needed
-[ ] 2.11 Ensure that authorization for Docker client commands is enabled
-[ ] 2.12 Ensure centralized and remote logging is configured
-[ ] 2.13 Ensure operations on legacy registry (v1) are Disabled
-[ ] 2.14 Ensure live restore is Enabled
-[ ] 2.15 Ensure Userland Proxy is Disabled
-[ ] 2.16 Ensure daemon-wide custom seccomp profile is applied, if needed
-[ ] 2.17 Ensure experimental features are avoided in production
-[ ] 2.18 Ensure containers are restricted from acquiring new privileges
-
-[ ] 3.x ...
-
-[x] 4.1 Ensure a user for the container has been created
-[ ] 4.2 Ensure that containers use trusted base images
-[ ] 4.3 Ensure unnecessary packages are not installed in the container
-[ ] 4.4 Ensure images are scanned and rebuilt to include security patches
-[ ] 4.5 Ensure Content trust for Docker is Enabled
-[ ] 4.6 Ensure HEALTHCHECK instructions have been added to the container image
-[ ] 4.7 Ensure update instructions are not use alone in the Dockerfile
-[ ] 4.8 Ensure setuid and setgid permissions are removed in the images
-[ ] 4.9 Ensure COPY is used instead of ADD in Dockerfile
-[ ] 4.10 Ensure secrets are not stored in Dockerfiles
-[ ] 4.11 Ensure verified packages are only Installed
-
-[ ] 5.x ...
-
-[ ] 6.x ...
-
-[ ] 7.x ...
+[ ] 2.1 Ensure network traffic is restricted between containers on the default bridge  
+[ ] 2.2 Ensure the logging level is set to 'info  
+[ ] 2.3 Ensure Docker is allowed to make changes to iptables  
+[ ] 2.4 Ensure insecure registries are not used  
+[ ] 2.5 Ensure aufs storage driver is not used  
+[ ] 2.6 Ensure TLS authentication for Docker daemon is configured  
+[ ] 2.7 Ensure the default ulimit is configured appropriately  
+[ ] 2.8 Enable user namespace support  
+[ ] 2.9 Ensure the default cgroup usage has been confirmed  
+[ ] 2.10 Ensure base device size is not changed until needed  
+[ ] 2.11 Ensure that authorization for Docker client commands is enabled  
+[ ] 2.12 Ensure centralized and remote logging is configured  
+[ ] 2.13 Ensure operations on legacy registry (v1) are Disabled  
+[ ] 2.14 Ensure live restore is Enabled  
+[ ] 2.15 Ensure Userland Proxy is Disabled  
+[ ] 2.16 Ensure daemon-wide custom seccomp profile is applied, if needed  
+[ ] 2.17 Ensure experimental features are avoided in production  
+[ ] 2.18 Ensure containers are restricted from acquiring new privileges  
+  
+[ ] 3.x ...  
+  
+[x] 4.1 Ensure a user for the container has been created  
+[ ] 4.2 Ensure that containers use trusted base images  
+[ ] 4.3 Ensure unnecessary packages are not installed in the container  
+[ ] 4.4 Ensure images are scanned and rebuilt to include security patches  
+[ ] 4.5 Ensure Content trust for Docker is Enabled  
+[ ] 4.6 Ensure HEALTHCHECK instructions have been added to the container image  
+[ ] 4.7 Ensure update instructions are not use alone in the Dockerfile  
+[ ] 4.8 Ensure setuid and setgid permissions are removed in the images  
+[ ] 4.9 Ensure COPY is used instead of ADD in Dockerfile  
+[ ] 4.10 Ensure secrets are not stored in Dockerfiles  
+[ ] 4.11 Ensure verified packages are only Installed  
+  
+[ ] 5.x ...  
+  
+[ ] 6.x ...  
+  
+[ ] 7.x ...  
