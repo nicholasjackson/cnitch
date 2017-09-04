@@ -14,10 +14,10 @@ build_linux:
 	CGO_ENABLED=0 GOOS=linux go build -o ./cmd/cnitch ./cmd/main.go
 
 build_docker: build_linux
-	docker build -t quay.io/nicholasjackson/cnitch .
+	docker build -t quay.io/nicholasjackson/cnitch:latest .
 
 push_docker:
-	docker push quay.io/nicholasjackson/cnitch 
+	docker push quay.io/nicholasjackson/cnitch:latest
 
 sonar_qube:
 	sonar-scanner \
